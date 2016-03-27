@@ -1,8 +1,29 @@
 // Imports
-
+@import "partials/clearfix";
+@import "partials/reset";
+@import "partials/general_styles";
 
 
 // 1. Many small items in a grid
+
+.block.small-grid.small-grid-flexbox {
+
+    background-color: red;
+
+  ul{
+    display: flex;
+    flex-flow: row wrap;
+    width: 22%;
+    align-items: stretch;
+    justify-content: center;
+
+    li{
+      flex: 0 0 auto;
+      box-sizing: border-box;
+      padding: 10px;
+    }
+  }
+}
 
 
 
