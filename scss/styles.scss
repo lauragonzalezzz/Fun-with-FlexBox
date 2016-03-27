@@ -8,19 +8,20 @@
 
 .block.small-grid.small-grid-flexbox {
 
-    background-color: red;
-
   ul{
     display: flex;
     flex-flow: row wrap;
-    width: 22%;
+    max-width: 400px;
+    height: 400px;
     align-items: stretch;
     justify-content: center;
+    margin: auto;
 
     li{
-      flex: 0 0 auto;
+      flex: 1 0 10%;
       box-sizing: border-box;
-      padding: 10px;
+      line-height: 40px;
+      text-align: center;
     }
   }
 }
@@ -28,6 +29,50 @@
 
 
 // 2. 2-Column Grid
+
+
+$breakpoints: (
+  'medium': 500px,
+  'large':  800px
+) !default;
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media only screen and (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+.block.two-col-grid.two-col-grid-flexbox {
+  background-color: orange;
+  display: flex;
+  flex-flow: row wrap;
+
+  .column-1 {
+    // flex: 1 0 50%;
+    order: 1;
+
+    @include respond-to('medium') {
+      flex: 1 0 40%;
+    }
+  }
+
+  .column-2 {
+
+    // flex: 1 0 50%;
+
+      flex: 1 1 auto;
+    @include respond-to('medium') {
+    }
+  }
+}
+
+
 
 
 
